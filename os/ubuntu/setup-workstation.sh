@@ -73,8 +73,19 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install gcc
 
 ## Install VS Code
-# TODO: automate install from https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
-# sudo dpkg -i code_1.105.1-1760482543_amd64.deb
+# https://code.visualstudio.com/docs/setup/linux
+if command -v code &>/dev/null; then
+	echo "VS Code is already installed — skipping."
+else
+	sudo install -m 0755 -d /etc/apt/keyrings
+	wget -qO- https://packages.microsoft.com/keys/microsoft.asc \
+		| gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+	sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
+	echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/code stable main" \
+		| sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+	sudo apt-get update
+	sudo apt-get install -y code
+fi
 
 ## [DEVOPS]
 ### Install docker
