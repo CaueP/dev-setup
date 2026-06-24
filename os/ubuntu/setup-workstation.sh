@@ -41,10 +41,10 @@ sudo apt install -y git
 	&& sudo apt install gh -y
 
 ## Post-setup for SSH keys
-sudo chmod 700 -R ~/.ssh
-sudo chmod 600 -R ~/.ssh/*
-sudo chown $USER ~/.ssh/known_hosts
-sudo chmod go-w ~/.ssh/config
+#sudo chmod 700 -R ~/.ssh
+#sudo chmod 600 -R ~/.ssh/*
+#sudo chown $USER ~/.ssh/known_hosts
+#sudo chmod go-w ~/.ssh/config
 
 
 ## Install terminator
