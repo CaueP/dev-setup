@@ -54,14 +54,12 @@ sudo add-apt-repository ppa:mattrose/terminator -y
 sudo apt-get update
 sudo apt install terminator -y
 
-## Install zsh and oh-my-zsh
-
-### Install zsh
-### https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
-sudo apt install zsh -y
-
 ### Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [ ! -d "${HOME}/.oh-my-zsh" ]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+else
+	echo "Oh My Zsh is already installed at ${HOME}/.oh-my-zsh — skipping."
+fi
 
 ## Install brew
 export NONINTERACTIVE=1 \ 
