@@ -62,8 +62,11 @@ else
 fi
 
 ## Install brew
-export NONINTERACTIVE=1 \ 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+	echo "Homebrew is already installed — skipping."
+else
+	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 echo >> /home/caue/.bashrc
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/caue/.bashrc
