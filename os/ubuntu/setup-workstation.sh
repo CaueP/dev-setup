@@ -13,21 +13,21 @@ sudo apt-get update
 #################
 # Install utils #
 #################
-sudo apt install curl
+sudo apt install -y curl
 
 sudo apt-get install -y --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
-sudo apt-get install htop
+sudo apt-get install -y htop
 
 ## Flameshot (replace for PrintScreen)
-sudo apt install flameshot
+sudo apt install -y flameshot
 echo "[Flameshot - Optional] Setup the screenshot keybind to PrintScr: https://flameshot.org/docs/guide/key-bindings/#on-ubuntu-and-other-gnome-based-distros"
 #####################
 # Install dev tools #
 #####################
 
 ## Install git
-sudo apt install git -y
+sudo apt install -y git
 
 ## Install Github CLI
 (type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
