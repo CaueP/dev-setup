@@ -115,7 +115,11 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 
 # Post install setup
 # https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
-sudo groupadd docker
+if getent group docker > /dev/null; then
+	echo "Docker group already exists — skipping."
+else
+	sudo groupadd docker
+fi
 sudo usermod -aG docker $USER
 newgrp docker
 
